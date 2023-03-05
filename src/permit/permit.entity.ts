@@ -1,4 +1,3 @@
-import { Contract } from "src/contract/contract.entity";
 import { Discount } from "src/discount/discount.entity";
 import { Hotel } from "src/hotel/hotel.entity";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
@@ -9,7 +8,7 @@ export class Permit {
     id: number;
 
     @Column({name: 'price', type: 'money'})
-    price: string;
+    price: number;
 
     @Column({name: 'time_start', type: 'date'})
     timeStart: Date;
@@ -20,9 +19,6 @@ export class Permit {
     @ManyToOne(() => Hotel, (hotel) => hotel.id, {nullable: false})
     @JoinColumn({ name: "id_hotel" })
     hotel: Hotel;
-
-    @OneToMany(() => Contract, (contract) => contract.permit, {onDelete: 'CASCADE'})
-    contracts: Contract[];
 
     @ManyToOne(() => Discount, (discount) => discount.id, {nullable: true})
     @JoinColumn({ name: "id_discount" })
