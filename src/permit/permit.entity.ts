@@ -1,6 +1,6 @@
 import { Discount } from "src/discount/discount.entity";
 import { Hotel } from "src/hotel/hotel.entity";
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 
 @Entity({name: 'permit'})
 export class Permit {
@@ -16,11 +16,11 @@ export class Permit {
     @Column({name: 'time_finish', type: 'date'})
     timeFinish: Date;
 
-    @ManyToOne(() => Hotel, (hotel) => hotel.id, {nullable: false})
+    @ManyToOne(() => Hotel, (hotel) => hotel.id, {nullable: false, onDelete: 'CASCADE'})
     @JoinColumn({ name: "id_hotel" })
     hotel: Hotel;
 
-    @ManyToOne(() => Discount, (discount) => discount.id, {nullable: true})
-    @JoinColumn({ name: "id_discount" })
+    @ManyToOne(() => Discount, (discount) => discount.id, {nullable: true, onDelete: 'SET NULL'})
+    @JoinColumn({ name: "id_discount"})
     discount: Discount;
 }

@@ -15,6 +15,6 @@ export class Discount {
     @Column({name: 'size', type: 'smallint'})
     size: number;
 
-    @OneToMany(() => Permit, (permit) => permit.discount, {nullable: true, onDelete: 'SET NULL'})
+    @OneToMany(() => Permit, (permit) => permit.discount, {nullable: true})
     permits: Permit[];
 }

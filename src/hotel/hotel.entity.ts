@@ -25,6 +25,6 @@ export class Hotel {
     @Column({name: 'count_stars', type: 'smallint'})
     countStarts: number;
 
-    @OneToMany(() => Permit, (permit) => permit.hotel, {nullable: true, onDelete: 'CASCADE'})
+    @OneToMany(() => Permit, (permit) => permit.hotel, {nullable: true})
     permits: Permit[];
 }
