@@ -17,8 +17,8 @@ export class HotelController {
     async readHotel(@Param('id') id: number): Promise<HotelModel> {
 
         try {
-            const client: HotelModel = await this.hotelService.getHotel(id);
-            return client;
+            const hotel: HotelModel = await this.hotelService.getHotel(id);
+            return  hotel;
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.NOT_FOUND);
         }    
@@ -26,10 +26,10 @@ export class HotelController {
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
-    async createHotel(@Body() client: HotelModel): Promise<void> {
+    async createHotel(@Body() hotel: HotelModel): Promise<void> {
 
         try {
-            await this.hotelService.saveHotel(client);
+            await this.hotelService.saveHotel(hotel);
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.EXPECTATION_FAILED);
         }       
@@ -37,9 +37,9 @@ export class HotelController {
 
     @Put()
     @HttpCode(HttpStatus.OK)
-    async updateHotel(@Body() client: HotelModel): Promise<void> {
+    async updateHotel(@Body() hotel: HotelModel): Promise<void> {
         try {
-            await this.hotelService.changeHotel(client);
+            await this.hotelService.changeHotel(hotel);
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.EXPECTATION_FAILED);
         }       

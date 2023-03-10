@@ -32,19 +32,19 @@ export class HotelService {
 
     async saveHotel(newHotel: HotelModel): Promise<void> {
 
-        let client: HotelModel = await this.hotelRepository.findOne({
+        let hotel: HotelModel = await this.hotelRepository.findOne({
             where: {
                 ...newHotel
             }
         });
 
-        if(client) {
+        if(hotel) {
             throw new HotelAlreadyExistsException();
         }
 
-        client = await this.hotelRepository.save(newHotel);
+        hotel = await this.hotelRepository.save(newHotel);
 
-        if(!client) {
+        if(!hotel) {
             throw new HotelCreatedException();
         }
     }
