@@ -32,10 +32,9 @@ export class ClientService {
 
     async saveClient(newClient: ClientModel): Promise<void> {
 
-        let client: ClientModel = await this.clientRepository.findOne({
-            where: {
-                ...newClient
-            }
+        let client: ClientModel = await this.clientRepository.findOneBy({
+            passportNumber: newClient.passportNumber,
+            passportSeries: newClient.passportSeries
         });
 
         if(client) {
