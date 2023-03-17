@@ -19,7 +19,7 @@ export class Hotel {
     @Column({name: 'street', type: 'varchar'})
     street: string;
 
-    @Column({name: 'home', type: 'varchar', length: 4})
+    @Column({name: 'home', type: 'varchar'})
     home: string;
 
     @Column({name: 'count_stars', type: 'smallint'})
