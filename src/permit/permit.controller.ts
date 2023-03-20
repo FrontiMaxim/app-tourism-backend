@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Param, Post, Put, Delete, Query } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Param, Post, Put, Delete } from '@nestjs/common';
 import { PermitService } from './permit.service';
 import { PermitModel } from './models/permit.model';
 
@@ -30,10 +30,10 @@ export class PermitController {
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
-    async createPermit(@Body() client: PermitModel): Promise<void> {
+    async createPermit(@Body() permit: PermitModel): Promise<void> {
 
         try {
-            await this.permitService.savePermit(client);
+            await this.permitService.savePermit(permit);
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.EXPECTATION_FAILED);
         }       
@@ -41,9 +41,9 @@ export class PermitController {
 
     @Put()
     @HttpCode(HttpStatus.OK)
-    async updatePermit(@Body() client: PermitModel): Promise<void> {
+    async updatePermit(@Body() permit: PermitModel): Promise<void> {
         try {
-            await this.permitService.changePermit(client);
+            await this.permitService.changePermit(permit);
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.EXPECTATION_FAILED);
         }       
