@@ -57,7 +57,11 @@ export class PermitService {
 
         let permit: PermitModel = await this.permitRepository.findOne({
             where: {
-                ...newPermit
+                hotel: {
+                    name: newPermit.hotel.name
+                },
+                timeStart: newPermit.timeStart,
+                timeFinish: newPermit.timeFinish
             }
         });
 
@@ -74,10 +78,16 @@ export class PermitService {
 
 
     async changePermit(changedPermit: PermitModel): Promise<void> {
-        
+
+        console.log(changedPermit)
         const result: UpdateResult = await this.permitRepository.update({
             id: changedPermit.id
-        }, changedPermit);
+        }, {
+            ...changedPermit,
+            discount: changedPermit.discount
+        },
+        
+        );
 
         if(!result.affected) {
             throw new PermitUpdatedException();
