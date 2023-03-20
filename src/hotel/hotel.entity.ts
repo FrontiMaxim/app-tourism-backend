@@ -1,8 +1,8 @@
-import { Contract } from "src/contract/contract.entity";
 import { Permit } from "src/permit/permit.entity";
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Unique } from "typeorm";
 
 @Entity({name: 'hotel'})
+@Unique(["name"])
 export class Hotel {
     @PrimaryGeneratedColumn({name: 'id', type: 'bigint'})
     id: number;

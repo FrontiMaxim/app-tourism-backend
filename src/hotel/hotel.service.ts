@@ -32,10 +32,8 @@ export class HotelService {
 
     async saveHotel(newHotel: HotelModel): Promise<void> {
 
-        let hotel: HotelModel = await this.hotelRepository.findOne({
-            where: {
-                ...newHotel
-            }
+        let hotel: HotelModel = await this.hotelRepository.findOneBy({
+           name: newHotel.name
         });
 
         if(hotel) {
