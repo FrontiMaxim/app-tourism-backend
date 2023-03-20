@@ -79,7 +79,6 @@ export class PermitService {
 
     async changePermit(changedPermit: PermitModel): Promise<void> {
 
-        console.log(changedPermit)
         const result: UpdateResult = await this.permitRepository.update({
             id: changedPermit.id
         }, {
