@@ -7,7 +7,7 @@ export class Permit {
     @PrimaryGeneratedColumn({name: 'id', type: 'bigint'})
     id: number;
 
-    @Column({name: 'price', type: 'money'})
+    @Column({name: 'price'})
     price: number;
 
     @Column({name: 'time_start', type: 'date'})
