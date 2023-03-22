@@ -12,7 +12,7 @@ export class Contract {
     @Column({name: 'address_hotel', type: 'varchar'})
     addressHotel: string;
 
-    @Column({name: 'price_permit', type: 'money'})
+    @Column({name: 'price_permit'})
     pricePermit: number;
 
     @Column({name: 'time_start', type: 'date'})
