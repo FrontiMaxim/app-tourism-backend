@@ -6,9 +6,6 @@ export class Discount {
     @PrimaryGeneratedColumn({name: 'id', type: 'bigint'})
     id: number;
 
-    @Column({name: 'time_start', type: 'date'})
-    timeStart: Date;
-
     @Column({name: 'time_finish', type: 'date'})
     timeFinish: Date;
 
