@@ -28,6 +28,6 @@ export class Client {
     @Column({name: 'passport_series', type: 'varchar', length: 4})
     passportSeries: string;
 
-    @OneToMany(() => Contract, (contract) => contract.client, {onDelete: 'CASCADE'})
+    @OneToMany(() => Contract, (contract) => contract.client)
     contracts: Contract[];
 }

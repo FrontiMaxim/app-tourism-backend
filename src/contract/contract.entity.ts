@@ -27,7 +27,7 @@ export class Contract {
     @Column({name: 'date_conclusion', type: 'date'})
     dateConclusion: Date;
     
-    @ManyToOne(() => Client, (client) => client.id, {nullable: false})
+    @ManyToOne(() => Client, (client) => client.id, {nullable: false, onDelete: 'CASCADE'})
     @JoinColumn({ name: "id_client" })
     client: Client;
 }
