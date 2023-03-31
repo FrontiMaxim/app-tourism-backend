@@ -11,9 +11,15 @@ import { Discount } from "./discount/discount.entity";
 import { HotelModule } from "./hotel/hotel.module";
 import { PermitModule } from "./permit/permit.module";
 import { DiscountModule } from "./discount/discount.module";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
 
 @Module({
     imports: [
+      ServeStaticModule.forRoot({
+        rootPath: join(__dirname, '..', 'static', 'client'),
+        renderPath: '/'
+      }),
       ConfigModule.forRoot({
         envFilePath: '.env'
       }),
